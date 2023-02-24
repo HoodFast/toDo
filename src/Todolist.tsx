@@ -46,6 +46,7 @@ export function Todolist(props: PropsType) {
     const changeStatus = (ID:string,value:boolean)=>{
         props.changeTaskStatus(ID, value, props.id);
     }
+
     return <div>
         <h3> <EditableSpan value={props.title} onChange={changeTodolistTitle} />
             <IconButton onClick={removeTodolist}>
