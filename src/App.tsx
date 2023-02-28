@@ -8,8 +8,8 @@ import {Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@
 import {Menu} from "@mui/icons-material";
 
 
-// export type FilterValuesType = "all" | "active" | "completed";
-export type FilterValuesType = string;
+export type FilterValuesType = "all" | "active" | "completed";
+// export type FilterValuesType = string;
 
 export type TodolistType = {
     id: string
@@ -17,7 +17,7 @@ export type TodolistType = {
     filter: FilterValuesType
 }
 
-type TasksStateType = {
+export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
