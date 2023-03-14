@@ -134,7 +134,7 @@ test('add todo list', () => {
     const addTasks = tasksReducer(initState, action)
 
     const keys = Object.keys(addTasks)
-    const addId = keys[2]
-    expect(addTodo[2].id).toBe(addId)
+    const addId = keys[0]
+    expect(addTodo[0].id).toBe(addId)
     expect(addTasks[addId]).toEqual([])
 })
