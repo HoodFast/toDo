@@ -37,10 +37,6 @@ test('correct todolist should be added', () => {
 
     let newTodolistTitle = 'New Todolist'
 
-    const startState: Array<TodolistType> = [
-        {id: todolistId1, title: 'What to learn', filter: 'all'},
-        {id: todolistId2, title: 'What to buy', filter: 'all'}
-    ]
 
     const endState = todolistsReducer(startState, addTodoList(newTodolistTitle))
 
@@ -52,10 +48,6 @@ test('correct todolist should change its name', () => {
 
     let newTodolistTitle = 'New Todolist'
 
-    const startState: Array<TodolistType> = [
-        {id: todolistId1, title: 'What to learn', filter: 'all'},
-        {id: todolistId2, title: 'What to buy', filter: 'all'}
-    ]
 
     const endState = todolistsReducer(startState, changeTodoListTitle(todolistId2, newTodolistTitle))
 
@@ -67,10 +59,6 @@ test('correct filter of todolist should be changed', () => {
 
     let newFilter: FilterValuesType = 'completed'
 
-    const startState: Array<TodolistType> = [
-        {id: todolistId1, title: 'What to learn', filter: 'all'},
-        {id: todolistId2, title: 'What to buy', filter: 'all'}
-    ]
 
     const endState = todolistsReducer(startState, changeTodoListFilter(todolistId2, newFilter))
 
