@@ -17,7 +17,7 @@ import {addTasksAC, changeTaskAC, removeTaskAC, statusChangeTaskAC, tasksReducer
 
 
 export type FilterValuesType = "all" | "active" | "completed";
-// export type FilterValuesType = string;
+
 
 export type TodolistType = {
     id: string
@@ -34,12 +34,12 @@ export function AppReducers() {
     let todolistId1 = v1();
     let todolistId2 = v1();
 
-    let [todolists, distatchTodolists] = useReducer(todolistsReducer, [
+    let [todolists, dispatchTodolists] = useReducer(todolistsReducer, [
         {id: todolistId1, title: "What to learn", filter: "all"},
         {id: todolistId2, title: "What to buy", filter: "all"}
     ])
 
-    let [tasks, distatchTasks] = useReducer(tasksReducer, {
+    let [tasks, dispatchTasks] = useReducer(tasksReducer, {
         [todolistId1]: [
             {id: v1(), title: "HTML&CSS", isDone: false},
             {id: v1(), title: "JS", isDone: true}
@@ -52,41 +52,41 @@ export function AppReducers() {
 
 
     function removeTask(id: string, todolistId: string) {
-        distatchTasks(removeTaskAC(todolistId,id))
+        dispatchTasks(removeTaskAC(todolistId,id))
     }
 
     function addTask(title: string, todolistId: string) {
-        distatchTasks(addTasksAC(todolistId,title))
+        dispatchTasks(addTasksAC(todolistId,title))
     }
 
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
-            distatchTasks(statusChangeTaskAC(todolistId,id,isDone))
+            dispatchTasks(statusChangeTaskAC(todolistId,id,isDone))
 
     }
 
     function changeTaskTitle(id: string, newTitle: string, todolistId: string) {
-            distatchTasks(changeTaskAC(todolistId,id,newTitle))
+            dispatchTasks(changeTaskAC(todolistId,id,newTitle))
 
     }
 
     function changeFilter(value: FilterValuesType, todolistId: string) {
-        distatchTodolists(changeTodoListFilter(todolistId,value))
+        dispatchTodolists(changeTodoListFilter(todolistId,value))
     }
 
     function removeTodolist(id: string) {
         const action=removeTodoList(id)
-        distatchTodolists(action)
-        distatchTasks(action)
+        dispatchTodolists(action)
+        dispatchTasks(action)
     }
 
     function changeTodolistTitle(id: string, title: string) {
-        distatchTodolists(changeTodoListTitle(id,title))
+        dispatchTodolists(changeTodoListTitle(id,title))
     }
 
     function addTodolist(title: string) {
         const action=addTodoList(title)
-        distatchTodolists(action)
-        distatchTasks(action)
+        dispatchTodolists(action)
+        dispatchTasks(action)
     }
 
     return (
