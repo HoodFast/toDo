@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useCallback} from 'react';
 import {FilterValuesType} from './App';
 import {AddItemForm} from './AddItemForm';
 import {EditableSpan} from './EditableSpan';
@@ -38,9 +38,9 @@ export function TodolistRedux(props: PropsType) {
 
 
     const dispatch = useDispatch()
-    const addTask = (title: string) => {
+    const addTask = useCallback((title: string) => {
         dispatch(addTasksAC(props.id, title))
-    }
+    },[props.id])
 
     const removeTodolist = () => {
         dispatch(removeTodoList(props.id))
@@ -81,7 +81,7 @@ export function TodolistRedux(props: PropsType) {
         <div>
             {
                 tasks.map(t => {
-                    const onClickHandler = () => dispatch(removeTaskAC(t.id, props.id))
+                    const onClickHandler = () => dispatch(removeTaskAC(props.id,t.id))
                     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
                         let newIsDoneValue = e.currentTarget.checked;
                         dispatch(statusChangeTaskAC(props.id, t.id, newIsDoneValue))
