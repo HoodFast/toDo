@@ -17,8 +17,7 @@ type TaskPropsType = {
 export const TaskRedux = memo((
     {
         taskId,
-        todoListId,
-
+        todoListId
     }: TaskPropsType) => {
 
     let [task] = useSelector<rootReducerType, TaskType[]>(state => state.tasks[todoListId].filter(t => t.id === taskId))

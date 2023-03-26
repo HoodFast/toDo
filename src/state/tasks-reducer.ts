@@ -11,14 +11,14 @@ const REMOVE_TODOLIST = 'REMOVE-TODOLIST'
 
 
 const initState:TasksStateType  = {
-    ['1']: [
-        {id: v1(), title: "HTML&CSS", isDone: false},
-        {id: v1(), title: "JS", isDone: true}
-    ],
-    ['2']: [
-        {id: v1(), title: "Milk", isDone: false},
-        {id: v1(), title: "React Book", isDone: true}
-    ]
+    // ['1']: [
+    //     {id: v1(), title: "HTML&CSS", isDone: false},
+    //     {id: v1(), title: "JS", isDone: true}
+    // ],
+    // ['2']: [
+    //     {id: v1(), title: "Milk", isDone: false},
+    //     {id: v1(), title: "React Book", isDone: true}
+    // ]
 }
 
 export const tasksReducer = (state=initState, action: tsarType): TasksStateType => {
