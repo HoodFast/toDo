@@ -1,6 +1,8 @@
 import {TasksStateType} from "../App";
 import {v1} from "uuid";
 import {addTodoListACType, removeTodoListACType} from "./todolists-reducer";
+import {Dispatch} from "redux";
+import {tasksAPI} from "../api/task-API";
 
 const ADD_TASK = 'ADD-TASK'
 const REMOVE_TASK = 'REMOVE-TASK'
@@ -84,3 +86,23 @@ export const statusChangeTaskAC = (todolistId: string, taskId: string, isDone: b
     return {type: STATUS_CHANGE_TASK, payload: {todolistId, taskId, isDone}} as const
 }
 
+
+
+//--------------------------------------------------------
+export const removeTaskTC = (todolistId:string,id:string) => {
+    return (dispatch: Dispatch) => {
+        tasksAPI.deleteTask(todolistId, id).then(() => dispatch(removeTaskAC(id, todolistId)))
+
+    }
+}
+
+export const addTaskTC = (todolistId:string,title:string)=>{
+    return (dispatch:Dispatch)=>{
+
+        tasksAPI.createTask(todolistId,title).then((res)=> {
+
+            // dispatch(addTaskAC(res.data.data.item))
+        })
+
+    }
+}

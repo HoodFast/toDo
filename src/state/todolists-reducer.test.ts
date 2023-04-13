@@ -7,6 +7,7 @@ import {
 } from './todolists-reducer'
 import {v1} from 'uuid'
 import {FilterValuesType, TodolistType} from '../App'
+import {setTodoListsAC} from "../../../todo14v3/src/state/todolists-reducer";
 
 let todolistId1 = v1()
 let todolistId2 = v1()
