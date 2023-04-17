@@ -1,5 +1,7 @@
 import {FilterValuesType, TodolistType} from "../App";
 import {v1} from "uuid";
+import { Dispatch } from "redux";
+import {todolistAPI} from "../api/todolist-API";
 
 const initState: TodolistType[] = [
     // {id: '1', title: "What to learn", filter: "all"},
@@ -52,4 +54,31 @@ export const changeTodoListFilter = (id:string, filter:FilterValuesType)=>{
     return {
         type: 'CHANGE-TODOLIST-FILTER', payload: {id, filter}
     }as const
+}
+
+//----------------------
+
+
+
+export const removeTodoListTC = (todoListId: string) => {
+    return (dispatch: Dispatch<tsarType>) => {
+        todolistAPI.deleteTodolist(todoListId).then(()=> {
+                dispatch(removeTodoList(todoListId))
+            }
+        )
+    }
+}
+export const addTodoTC = (title:string)=>{
+    return (dispatch: Dispatch<tsarType>)=>{
+        todolistAPI.createTodolist(title).then((res)=>{
+            dispatch(addTodoList(res.data.data.item.title))
+        })
+    }
+}
+export const updateTodoTitleTC=(todoListId:string,title:string)=>{
+    return (dispatch: Dispatch<tsarType>)=>{
+        todolistAPI.updateTodolist(todoListId, title).then((res)=>{
+            dispatch(changeTodoListTitle(todoListId, title))
+        })
+    }
 }
